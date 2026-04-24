@@ -1,0 +1,36 @@
+Vulnerability Findings Summary
+
+1. VSFTPD 2.3.4 Backdoor Vulnerability (Critical)
+The target system was running an outdated version of VSFTPD 2.3.4 which contains a known backdoor vulnerability. This vulnerability was successfully exploited using Metasploit, resulting in unauthorized root shell access.
+
+2. Outdated Apache Web Server (High)
+The web server was running Apache 2.2.8, which is outdated and may contain multiple known security vulnerabilities due to missing security updates.
+
+3. Outdated PHP Version (High)
+The target was using an outdated PHP version that may expose the system to remote code execution and information disclosure vulnerabilities.
+
+4. HTTP TRACE Method Enabled (Medium)
+The HTTP TRACE method was enabled on the web server, which could allow Cross Site Tracing attacks and expose sensitive header information.
+
+5. Directory Listing Enabled (Medium)
+Directory indexing was enabled, allowing attackers to view sensitive files and folders that should not be publicly accessible.
+
+6. Exposed phpMyAdmin Interface (Medium)
+The phpMyAdmin login page was publicly accessible, increasing the risk of brute force attacks and database compromise.
+
+7. TLS/SSL Logjam Vulnerability (High)
+Weak cryptographic configurations were identified through Nmap vulnerability scripts, making encrypted communications vulnerable to downgrade attacks.
+
+8. SMB Service Misconfiguration (Medium)
+The SMB service was exposed and improperly configured, which could potentially allow unauthorized access or enumeration.
+
+9. Multiple OpenVAS Findings (Critical/High/Medium)
+OpenVAS identified 124 total vulnerabilities:
+- Critical: 14
+- High: 10
+- Medium: 40
+- Low: 6
+- Log: 89
+
+10. Successful Root Access (Critical Impact)
+Post exploitation confirmed full root-level access to the target machine, demonstrating the severity of the identified vulnerabilities.
