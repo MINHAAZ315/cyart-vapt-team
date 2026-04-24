@@ -1,0 +1,44 @@
+Week 2 VAPT Workflow
+1. Lab Environment Setup
+
+A controlled testing environment was prepared using Kali Linux as the attacker machine and Metasploitable2 as the vulnerable target machine in VMware Workstation. Both virtual machines were connected to the same network to ensure communication during assessment.
+
+2. Connectivity Verification
+
+Before starting security testing, connectivity between both machines was verified using the ping command. This ensured that the target machine was reachable from Kali Linux.
+
+3. Host Discovery
+
+An initial network scan was performed using nmap -sn to identify active hosts in the network and confirm the presence of the target IP address.
+
+4. Port Scanning
+
+A basic Nmap scan was executed to identify open ports on the target machine. This helped in understanding which services were exposed.
+
+5. Service Enumeration
+
+Detailed service enumeration was performed using nmap -sV and NSE scripts to identify service versions, misconfigurations, and known vulnerabilities.
+
+6. Web Vulnerability Scanning
+
+Nikto was used to scan the web server for common vulnerabilities such as outdated software versions, insecure configurations, missing security headers, and exposed directories.
+
+7. Automated Vulnerability Assessment
+
+OpenVAS was used to perform automated vulnerability scanning and identify critical, high, medium, and low severity vulnerabilities present on the target system.
+
+8. Exploitation Phase
+
+Based on identified vulnerabilities, Metasploit Framework was used to exploit the vulnerable FTP service (vsftpd 2.3.4 backdoor) and gain unauthorized access to the target machine.
+
+9. Access Verification
+
+After successful exploitation, system-level access was verified using commands such as whoami to confirm elevated privileges.
+
+10. Post-Exploitation Enumeration
+
+Basic enumeration was performed using commands like pwd, ls, and cat /etc/passwd to understand system structure and verify access to sensitive files.
+
+11. Documentation and Reporting
+
+All findings, screenshots, identified vulnerabilities, exploitation steps, and remediation recommendations were documented for final submission.
