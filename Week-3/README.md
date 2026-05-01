@@ -1,81 +1,56 @@
- VAPT Project – Week 3 (Full VAPT Cycle)
+# Week 3 – VAPT Capstone Project
 
-# Overview
-This project demonstrates a complete Vulnerability Assessment and Penetration Testing (VAPT) cycle performed on a controlled lab environment using DVWA and Metasploitable2.
-
-The objective was to identify vulnerabilities, exploit them, perform post-exploitation activities, and provide remediation strategies.
+## Overview
+This project demonstrates a complete Vulnerability Assessment and Penetration Testing (VAPT) cycle performed in a controlled lab environment using Metasploitable2 and DVWA. The objective was to identify vulnerabilities, exploit them, validate system compromise, and provide remediation strategies based on real-world attack scenarios.
 
 ---
 
-# Tools Used
+## Tools Used
 - Kali Linux
 - Nmap
 - OpenVAS
 - Metasploit Framework
-- Burp Suite
 - sqlmap
+- Burp Suite
 - OWASP ZAP
 - Wireshark
 
 ---
 
-#  Methodology (PTES Based)
-1. Reconnaissance
-2. Scanning & Enumeration
-3. Vulnerability Assessment
-4. Exploitation
-5. Post-Exploitation
-6. Reporting & Remediation
+## Workflow Summary
+1. Lab environment setup (Kali + Metasploitable2 + DVWA)  
+2. Connectivity verification using ping  
+3. Host discovery using Nmap  
+4. Port scanning and service enumeration  
+5. Vulnerability assessment (OpenVAS, sqlmap, Burp Suite, ZAP)  
+6. Web application testing (SQL Injection, XSS)  
+7. Risk analysis using CVSS scoring  
+8. Exploitation using Metasploit (vsftpd backdoor)  
+9. Post-exploitation (root access validation, file access)  
+10. Evidence collection (SHA256 hashing, Wireshark capture)  
+11. Documentation and reporting  
 
 ---
 
-# Key Activities
-
-# Reconnaissance
-- Discovered target IP using Nmap
-
-# Scanning
-- Identified open ports and services
-- Detected vulnerable services
-
-# Vulnerability Assessment
-- OpenVAS scan revealed critical vulnerabilities
-- SQL Injection tested using sqlmap
-- XSS identified manually
-
-# Exploitation
-- Exploited vsftpd 2.3.4 backdoor using Metasploit
-- Gained root-level access
-
-# Post-Exploitation
-- Enumerated system information
-- Accessed sensitive files (`/etc/passwd`, `/etc/shadow`)
-- Verified privilege escalation
-
-# Evidence Collection
-- Generated SHA256 hash for integrity
-
-# Network Analysis
-- Captured traffic using Wireshark
+## Key Findings
+- SQL Injection (Critical)  
+- Cross-Site Scripting (Medium)  
+- vsftpd 2.3.4 Backdoor (Critical)  
+- Telnet (Insecure Protocol)  
+- Outdated Services (Apache, MySQL, Samba)  
 
 ---
 
-# Key Findings
-- SQL Injection (Critical)
-- Cross-Site Scripting (Medium)
-- vsftpd Backdoor (Critical)
-- Telnet Insecure Service
-- SMB Misconfiguration
+## Exploitation Summary
+A critical vulnerability in vsftpd 2.3.4 was successfully exploited using Metasploit, resulting in root-level access. Post-exploitation confirmed full system compromise by accessing sensitive files such as `/etc/passwd` and `/etc/shadow`.
 
 ---
 
-# Remediation Summary
-- Use prepared statements for SQL queries
-- Implement input validation & output encoding
-- Disable unused services (FTP, Telnet)
-- Apply security patches
-- Use firewall and monitoring systems
+## Remediation Highlights
+- Use parameterized queries for SQL  
+- Implement input validation and output encoding  
+- Disable insecure services (FTP, Telnet)  
+- Apply security patches and updates  
+- Enable firewall and monitoring systems  
 
----
-
-# Repository Structure
+--
