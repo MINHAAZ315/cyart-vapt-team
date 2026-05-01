@@ -1,0 +1,52 @@
+Week 3 VAPT Workflow
+1. Lab Environment Setup
+
+A controlled lab environment was configured using Kali Linux as the attacker machine and Metasploitable2 hosting DVWA as the target system. Both machines were connected within the same virtual network to ensure secure and uninterrupted communication during testing.
+
+2. Connectivity Verification
+
+Connectivity between the attacker and target systems was verified using the ping command. This ensured that the target machine was active and reachable before initiating further assessment activities.
+
+3. Host Discovery
+
+A network discovery scan was conducted using nmap -sn to identify active hosts within the network range and confirm the presence of the target system.
+
+4. Port Scanning
+
+A detailed port scan was performed using Nmap to identify open ports on the target system, providing insight into exposed services that could be potential entry points.
+
+5. Service Enumeration
+
+Service enumeration was carried out using nmap -sV to determine service versions and identify outdated or vulnerable services such as FTP, Telnet, HTTP, and SMB.
+
+6. Vulnerability Assessment
+
+Automated and manual vulnerability assessment was performed using OpenVAS, sqlmap, Burp Suite, and OWASP ZAP to detect issues such as SQL Injection, Cross-Site Scripting (XSS), missing security headers, and outdated services.
+
+7. Web Application Testing
+
+The DVWA application was tested for input validation weaknesses. SQL Injection was confirmed using sqlmap, and XSS vulnerabilities were validated through manual payload execution and request manipulation via Burp Suite.
+
+8. Risk Analysis
+
+Identified vulnerabilities were analyzed using CVSS scoring to determine severity and impact. Critical issues such as the vsftpd backdoor and SQL Injection were prioritized based on exploitability and system impact.
+
+9. Exploitation Phase
+
+Metasploit Framework was used to exploit the vsftpd 2.3.4 backdoor vulnerability. Successful exploitation resulted in unauthorized shell access to the target system.
+
+10. Access Verification
+
+Post-exploitation access was verified using commands such as whoami to confirm root-level privileges and validate successful system compromise.
+
+11. Post-Exploitation Enumeration
+
+Further enumeration was performed using commands like uname -a, ps aux, cat /etc/passwd, and cat /etc/shadow to gather system information and confirm access to sensitive data.
+
+12. Evidence Collection and Validation
+
+Collected evidence was secured using SHA256 hashing to maintain integrity. Network traffic was analyzed using Wireshark to observe communication patterns and identify unencrypted data transmission.
+
+13. Documentation and Reporting
+
+All findings, screenshots, exploitation steps, vulnerability details, and remediation strategies were documented in a structured report aligned with industry-standard VAPT reporting practices.
