@@ -1,13 +1,13 @@
-# 🔐 VAPT Project – Week 3 (Full VAPT Cycle)
+ VAPT Project – Week 3 (Full VAPT Cycle)
 
-## 📌 Overview
+# Overview
 This project demonstrates a complete Vulnerability Assessment and Penetration Testing (VAPT) cycle performed on a controlled lab environment using DVWA and Metasploitable2.
 
 The objective was to identify vulnerabilities, exploit them, perform post-exploitation activities, and provide remediation strategies.
 
 ---
 
-## 🛠️ Tools Used
+# Tools Used
 - Kali Linux
 - Nmap
 - OpenVAS
@@ -19,7 +19,7 @@ The objective was to identify vulnerabilities, exploit them, perform post-exploi
 
 ---
 
-## 🔍 Methodology (PTES Based)
+#  Methodology (PTES Based)
 1. Reconnaissance
 2. Scanning & Enumeration
 3. Vulnerability Assessment
@@ -29,38 +29,38 @@ The objective was to identify vulnerabilities, exploit them, perform post-exploi
 
 ---
 
-## 🚀 Key Activities
+# Key Activities
 
-### 🔹 Reconnaissance
+# Reconnaissance
 - Discovered target IP using Nmap
 
-### 🔹 Scanning
+# Scanning
 - Identified open ports and services
 - Detected vulnerable services
 
-### 🔹 Vulnerability Assessment
+# Vulnerability Assessment
 - OpenVAS scan revealed critical vulnerabilities
 - SQL Injection tested using sqlmap
 - XSS identified manually
 
-### 🔹 Exploitation
+# Exploitation
 - Exploited vsftpd 2.3.4 backdoor using Metasploit
 - Gained root-level access
 
-### 🔹 Post-Exploitation
+# Post-Exploitation
 - Enumerated system information
 - Accessed sensitive files (`/etc/passwd`, `/etc/shadow`)
 - Verified privilege escalation
 
-### 🔹 Evidence Collection
+# Evidence Collection
 - Generated SHA256 hash for integrity
 
-### 🔹 Network Analysis
+# Network Analysis
 - Captured traffic using Wireshark
 
 ---
 
-## ⚠️ Key Findings
+# Key Findings
 - SQL Injection (Critical)
 - Cross-Site Scripting (Medium)
 - vsftpd Backdoor (Critical)
@@ -69,7 +69,7 @@ The objective was to identify vulnerabilities, exploit them, perform post-exploi
 
 ---
 
-## 🛡️ Remediation Summary
+# Remediation Summary
 - Use prepared statements for SQL queries
 - Implement input validation & output encoding
 - Disable unused services (FTP, Telnet)
@@ -78,4 +78,4 @@ The objective was to identify vulnerabilities, exploit them, perform post-exploi
 
 ---
 
-## 📂 Repository Structure
+# Repository Structure
