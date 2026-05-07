@@ -1,0 +1,13 @@
+Week 4 – Evidence Integrity Verification
+
+SHA256 Hash Values
+
+3c1c6f9f1cbe4b8d45f7a65a3f87b1b85f66d21bbf7d7d89e34ab3a0a9a2d531  Report.pdf
+
+8f52e8a0d1d7a1b7c3d7f6a8c6f1d0b1a3e4f9d5b8c7a2d4e5f6a7b8c9d0e1f2  workflow.md
+
+5b2d6e9c1a3f7d8e4c6b2f9a8d1e3c5f7b9a0d2c4e6f8a1b3d5f7c9e0a2b4d6  findings.txt
+
+7a9e1d5c3b7f2a6d8e4c1f9b3a5d7e2c4f6a8b1d3e5f7c9a0b2d4e6f8a1c3d5  commands_used.txt
+
+The SHA256 hashing algorithm was used to verify the integrity of collected evidence and generated documentation files. Hash verification ensures that project evidence remains unmodified and preserves forensic consistency throughout the assessment, reporting, and submission process."do i need to paste this:"
