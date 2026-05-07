@@ -1,0 +1,190 @@
+Week 4 – Advanced VAPT Workflow
+
+1. Environment Initialization
+
+A controlled penetration testing environment was configured using Kali Linux as the attacking system and Metasploitable2, DVWA, and Android APK targets as vulnerable assets. All virtual machines were connected within the same virtual network to enable reconnaissance, exploitation, traffic interception, and post-exploitation activities in an isolated laboratory environment.
+
+2. Connectivity Verification
+
+Initial communication between systems was verified using ICMP requests to confirm network reachability and ensure that the target systems were accessible prior to enumeration and vulnerability assessment activities.
+
+Command Used:
+ping 192.168.11.129
+
+3. Reconnaissance and Service Enumeration
+
+Network reconnaissance was performed using Nmap to identify active hosts, open ports, exposed services, and service versions running on the target system. Enumeration activities provided visibility into vulnerable network services such as FTP, HTTP, SMB, and Telnet.
+
+Commands Used:
+nmap -sn 192.168.11.0/24
+nmap -sV 192.168.11.129
+
+4. Vulnerability Assessment
+
+OpenVAS was used to conduct automated vulnerability assessment against the target system. The scan identified outdated services, insecure configurations, weak protocols, and known vulnerabilities with associated severity levels.
+
+Activities Performed:
+- Target configuration
+- Full vulnerability scan execution
+- Risk severity analysis
+- Vulnerability reporting
+
+5. Advanced Exploitation Simulation
+
+Metasploit Framework was used to simulate exploitation of vulnerable services. The vsftpd 2.3.4 backdoor vulnerability was exploited to obtain unauthorized shell access. Multi-stage exploit chaining concepts involving XSS-to-RCE attack flow were also documented as part of advanced exploitation methodology.
+
+Commands Used:
+msfconsole
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOSTS 192.168.11.129
+run
+
+Activities Performed:
+- Shell acquisition
+- Exploit chain simulation
+- Remote command execution
+- Post-exploitation validation
+
+6. Web and API Security Testing
+
+DVWA was used to simulate modern web application and API security vulnerabilities aligned with OWASP testing methodologies. Burp Suite was configured to intercept and manipulate HTTP requests, while sqlmap automated SQL Injection exploitation.
+
+Activities Performed:
+- API endpoint enumeration
+- SQL Injection testing
+- Reflected XSS execution
+- Request parameter manipulation
+- Automated database enumeration
+
+Payloads Used:
+1' OR '1'='1
+<script>alert('XSS')</script>
+
+Commands Used:
+sqlmap -u "http://192.168.11.129/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="security=low; PHPSESSID=SESSIONID" --dbs
+
+7. Manual Request Manipulation
+
+Burp Suite Repeater and Intercept modules were used to manipulate HTTP parameters and simulate unauthorized request tampering. Parameter modification demonstrated insecure input handling and weak validation mechanisms within the application environment.
+
+Activities Performed:
+- Request interception
+- Payload injection
+- Response analysis
+- Unauthorized access simulation
+
+8. Privilege Escalation Enumeration
+
+Privilege escalation testing was conducted using LinPEAS and manual enumeration techniques to identify insecure SUID binaries, weak configurations, and privilege escalation vectors present on the Linux target system.
+
+Commands Used:
+whoami
+uname -a
+find / -perm -4000 2>/dev/null
+
+Activities Performed:
+- SUID enumeration
+- Root privilege verification
+- System information gathering
+- Misconfiguration analysis
+
+9. Persistence Simulation
+
+Persistence techniques were simulated using cron-based scheduled tasks to demonstrate how attackers can maintain recurring access to compromised systems following initial exploitation.
+
+Commands Used:
+crontab -e
+crontab -l
+
+Activities Performed:
+- Scheduled task creation
+- Persistence validation
+- Access continuity simulation
+
+10. Network Protocol Attack Simulation
+
+Responder was used to simulate LLMNR and SMB relay attacks within the testing environment. Ettercap was configured to perform ARP spoofing and unified sniffing operations to demonstrate Man-in-the-Middle attack scenarios.
+
+Commands Used:
+sudo responder -I eth0
+sudo ettercap -T -M arp:remote /192.168.11.129// /192.168.11.2//
+
+Activities Performed:
+- LLMNR poisoning
+- SMB relay simulation
+- ARP spoofing
+- Traffic interception
+
+11. Traffic Capture and Protocol Analysis
+
+Wireshark was used to capture and inspect network traffic generated during exploitation and protocol attack simulations. Analysis included ARP, ICMP, DNS, TCP, HTTP, and TLS traffic to study packet-level communication patterns.
+
+Activities Performed:
+- Packet capture
+- Protocol filtering
+- Traffic inspection
+- Communication analysis
+
+12. Mobile Application Static Analysis
+
+MobSF was used to perform static analysis of Android APK files. The assessment identified exported activities, insecure storage configurations, excessive permissions, and exposed application components.
+
+Activities Performed:
+- APK upload and analysis
+- Manifest inspection
+- Security score evaluation
+- Vulnerability identification
+
+13. Mobile Runtime Instrumentation
+
+Frida was installed and configured to simulate runtime function hooking and dynamic instrumentation within Android applications. The workflow demonstrated how attackers can intercept application behavior during execution.
+
+Commands Used:
+frida --version
+frida-trace -U -i "checkPassword" com.example.app
+
+Activities Performed:
+- Runtime hooking simulation
+- Function interception
+- Dynamic analysis workflow
+
+14. Android IPC Testing Workflow
+
+Drozer setup and Android Debug Bridge workflows were demonstrated to simulate Android IPC testing, package enumeration, and exported component analysis within mobile applications.
+
+Commands Used:
+adb devices
+adb install drozer-agent.apk
+drozer console connect
+
+Activities Performed:
+- Package enumeration
+- IPC workflow demonstration
+- Android application analysis
+
+15. Evidence Collection and Documentation
+
+Screenshots, logs, traffic captures, findings tables, and exploitation evidence were collected throughout the assessment to maintain technical documentation and reporting accuracy.
+
+Evidence Included:
+- Nmap scans
+- OpenVAS findings
+- Burp interception
+- SQL Injection evidence
+- XSS execution
+- Metasploit shell access
+- LinPEAS output
+- Responder poisoning
+- Ettercap ARP spoofing
+- Wireshark captures
+- MobSF analysis
+- Frida instrumentation
+- Drozer workflow
+
+16. Reporting and Remediation
+
+A complete VAPT report was prepared containing methodology, findings, exploitation evidence, attack timelines, remediation strategies, and risk observations. Recommendations focused on secure coding practices, patch management, service hardening, network segmentation, and least privilege enforcement.
+
+17. Final Capstone Validation
+
+The capstone project concluded with a complete end-to-end penetration testing simulation involving reconnaissance, exploitation, privilege escalation, persistence, traffic analysis, mobile testing, remediation planning, and professional reporting aligned with PTES-oriented assessment methodology.
