@@ -1,0 +1,99 @@
+Week 4 – Security Findings Summary
+
+1. SQL Injection Vulnerability
+Severity: Critical
+
+The DVWA application was vulnerable to SQL Injection attacks due to improper input validation. Manual payload injection and automated sqlmap exploitation successfully retrieved backend database information, demonstrating the risk of unauthorized data disclosure and database compromise.
+
+Affected Component:
+DVWA SQL Injection Module
+
+------------------------------------------------------------
+
+2. Reflected Cross-Site Scripting (XSS)
+Severity: High
+
+Reflected XSS vulnerabilities were identified within the DVWA application. JavaScript payloads executed successfully within the browser context, confirming insufficient sanitization of user-controlled input fields.
+
+Affected Component:
+DVWA XSS Reflected Module
+
+------------------------------------------------------------
+
+3. vsftpd 2.3.4 Backdoor Exploitation
+Severity: Critical
+
+The target system exposed a vulnerable FTP service running vsftpd 2.3.4. Exploitation using Metasploit resulted in unauthorized shell access and complete system compromise.
+
+Affected Service:
+FTP Service (Port 21)
+
+------------------------------------------------------------
+
+4. Weak Privilege Separation
+Severity: High
+
+Privilege escalation enumeration revealed multiple SUID binaries and insecure configurations that could increase the risk of unauthorized root-level access within the Linux environment.
+
+Affected Component:
+Linux System Configuration
+
+------------------------------------------------------------
+
+5. Cron-Based Persistence
+Severity: Medium
+
+Persistence mechanisms were simulated through cron job scheduling to demonstrate how attackers can maintain recurring access to compromised systems after initial exploitation.
+
+Affected Component:
+Scheduled Task Configuration
+
+------------------------------------------------------------
+
+6. LLMNR and SMB Relay Exposure
+Severity: High
+
+Responder successfully simulated LLMNR poisoning and SMB relay behavior within the local network environment. The activity demonstrated how weak broadcast protocols can expose authentication requests to interception attacks.
+
+Affected Component:
+Network Name Resolution Services
+
+------------------------------------------------------------
+
+7. ARP Spoofing Vulnerability
+Severity: High
+
+Ettercap demonstrated the feasibility of ARP spoofing attacks capable of redirecting traffic through the attacker-controlled system. This increases the risk of Man-in-the-Middle attacks and traffic interception.
+
+Affected Component:
+Local Network Communication
+
+------------------------------------------------------------
+
+8. Insecure Mobile Application Configuration
+Severity: High
+
+Static analysis of Android APK files identified insecure configurations, exported application components, and weak security controls that may expose sensitive application functionality to unauthorized access.
+
+Affected Component:
+Android Application Package
+
+------------------------------------------------------------
+
+9. Runtime Instrumentation Exposure
+Severity: Medium
+
+Dynamic instrumentation workflows using Frida demonstrated how attackers can intercept application functions during execution and potentially bypass authentication or manipulate application behavior.
+
+Affected Component:
+Android Runtime Environment
+
+------------------------------------------------------------
+
+10. Weak Traffic Protection
+Severity: Medium
+
+Wireshark analysis identified visible network communication patterns including ARP, ICMP, DNS, TCP, and HTTP traffic. Unencrypted or poorly protected traffic increases the risk of network reconnaissance and interception.
+
+Affected Component:
+Network Communication Protocols
