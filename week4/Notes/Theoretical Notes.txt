@@ -1,0 +1,303 @@
+Week 4 – Advanced Vulnerability Assessment and Penetration Testing Notes
+
+Introduction
+
+Advanced Vulnerability Assessment and Penetration Testing (VAPT) combines reconnaissance, vulnerability analysis, exploitation, privilege escalation, persistence simulation, network attack techniques, mobile security testing, and professional reporting into a structured offensive security workflow. Unlike basic vulnerability scanning, advanced VAPT focuses on understanding attack paths, chaining weaknesses, bypassing protections, validating impact, and documenting realistic attack scenarios against vulnerable systems.
+
+The objective of advanced penetration testing is not limited to identifying vulnerabilities alone. It also involves understanding how attackers move through systems, maintain access, manipulate protocols, intercept communication, exploit insecure application logic, and compromise sensitive information through combined attack techniques.
+
+A controlled laboratory environment containing intentionally vulnerable systems such as DVWA, Metasploitable2, Android APK targets, and simulated network services provides a safe platform for studying offensive security methodologies without affecting production systems.
+
+1. Advanced Exploitation Techniques
+
+Advanced exploitation refers to the process of compromising systems using multi-stage attack techniques, exploit chaining, defense bypass strategies, and post-exploitation workflows. Modern attacks rarely rely on a single vulnerability. Instead, attackers combine several weaknesses together to achieve complete system compromise.
+
+Exploit chaining combines separate vulnerabilities into a continuous attack path. For example, Cross-Site Scripting vulnerabilities can be used to hijack session tokens, which may then be combined with insecure administrative functionality or SQL Injection to escalate access privileges. Multi-stage exploitation increases attack effectiveness and bypasses security layers that may block isolated attacks.
+
+Exploit development requires understanding low-level system behavior including stack memory, heap allocation, instruction execution flow, pointer manipulation, and memory corruption techniques. Buffer overflow vulnerabilities occur when applications fail to validate memory boundaries properly, allowing attackers to overwrite execution control structures such as return addresses or function pointers.
+
+Modern operating systems implement mitigation mechanisms including:
+
+- ASLR (Address Space Layout Randomization)
+- DEP (Data Execution Prevention)
+- Stack canaries
+- Control Flow Integrity
+
+These protections reduce the reliability of traditional exploitation methods. Attackers bypass these protections using techniques such as Return-Oriented Programming (ROP), which chains together existing executable instructions within memory instead of injecting traditional shellcode.
+
+Metasploit Framework simplifies exploitation by providing reusable exploit modules, payloads, post-exploitation tools, encoders, and session management features. Meterpreter payloads provide advanced remote interaction capabilities including:
+
+- Command execution
+- File manipulation
+- Privilege escalation
+- Persistence
+- Process migration
+- Credential access
+
+Post-exploitation activities focus on maintaining access, gathering sensitive information, enumerating internal systems, and validating compromise impact after initial exploitation succeeds.
+
+2. API Security Testing
+
+Application Programming Interfaces (APIs) are responsible for communication between applications, mobile clients, databases, and backend services. APIs expose business logic and sensitive data directly to users and external systems, making them attractive targets for attackers.
+
+OWASP API Security Top 10 identifies common API weaknesses including:
+
+- Broken Object Level Authorization (BOLA)
+- Broken Authentication
+- Excessive Data Exposure
+- Lack of Rate Limiting
+- Injection Vulnerabilities
+- Security Misconfiguration
+
+BOLA vulnerabilities occur when APIs fail to validate whether authenticated users are authorized to access specific resources. Attackers manipulate object identifiers such as user IDs, account numbers, or document references to access unauthorized information.
+
+API enumeration identifies:
+- Endpoints
+- Request methods
+- Parameters
+- Authentication mechanisms
+- Response structures
+- Data exposure behavior
+
+Burp Suite is widely used for API testing because it allows interception, replay, modification, and analysis of HTTP requests. Burp Repeater helps test parameter tampering, token manipulation, authentication bypass attempts, and injection payloads.
+
+SQL Injection remains one of the most dangerous API and web application vulnerabilities. Applications that dynamically construct SQL queries without proper parameter validation become vulnerable to database manipulation attacks. Successful SQL Injection may allow:
+
+- Database enumeration
+- Credential extraction
+- Authentication bypass
+- File access
+- Remote command execution
+
+sqlmap automates SQL Injection exploitation by identifying injectable parameters, fingerprinting database engines, and extracting database contents.
+
+GraphQL APIs introduce additional risks because nested query structures can expose excessive backend data if query restrictions are not enforced properly.
+
+Secure APIs require:
+- Strict authorization checks
+- Token validation
+- Input sanitization
+- Output filtering
+- Rate limiting
+- Secure session handling
+
+3. Web Application Exploitation
+
+Web applications are frequent attack targets because they directly interact with user input, backend databases, and authentication systems. Weak input handling creates opportunities for code execution, data manipulation, and session compromise.
+
+Cross-Site Scripting (XSS) occurs when applications fail to sanitize user-controlled input before rendering it within web pages. Attackers inject malicious JavaScript payloads that execute within victim browsers. XSS attacks may allow:
+
+- Session hijacking
+- Credential theft
+- DOM manipulation
+- Phishing attacks
+- Browser redirection
+
+Reflected XSS immediately reflects malicious input within server responses, while stored XSS persists malicious scripts within backend databases for repeated execution.
+
+SQL Injection exploits insecure database query construction. Applications vulnerable to SQL Injection often concatenate raw user input directly into SQL statements without using parameterized queries or prepared statements.
+
+Manual exploitation using Burp Suite demonstrates how attackers manipulate requests and inject malicious payloads into application parameters. Automated exploitation using sqlmap confirms the severity and exploitability of database vulnerabilities.
+
+Secure web applications require:
+- Prepared statements
+- Output encoding
+- Content Security Policies
+- Input validation
+- Session security controls
+
+4. Privilege Escalation and Persistence
+
+Privilege escalation occurs when attackers elevate permissions beyond those initially granted after exploitation. Initial access often provides limited privileges, requiring further escalation to gain administrative or root-level control.
+
+Linux privilege escalation commonly targets:
+- SUID binaries
+- Weak file permissions
+- Misconfigured services
+- Writable system paths
+- Vulnerable kernels
+- Credential exposure
+
+SUID binaries execute with the permissions of the file owner rather than the current user. Misconfigured SUID binaries may allow attackers to execute commands with elevated privileges.
+
+LinPEAS automates Linux privilege escalation enumeration by identifying:
+- Weak permissions
+- SUID binaries
+- Writable files
+- Sensitive credentials
+- Vulnerable software
+- Scheduled tasks
+
+Privilege escalation techniques validate the impact of insecure system configurations and demonstrate how attackers move from low-privileged access to full system compromise.
+
+Persistence mechanisms ensure attackers maintain recurring access after system compromise. Persistence methods include:
+- Cron jobs
+- Startup services
+- SSH keys
+- Scheduled tasks
+- Registry modifications
+- Malicious daemons
+
+Cron-based persistence allows recurring command execution at scheduled intervals, enabling attackers to re-establish access automatically after reboot or logout events.
+
+Living-off-the-Land techniques abuse legitimate system utilities such as PowerShell, WMI, cron, or native administrative tools to avoid detection.
+
+5. Network Protocol Attacks
+
+Internal network protocols frequently expose insecure communication behaviors that attackers exploit during lateral movement and credential interception.
+
+LLMNR and NetBIOS are broadcast-based name resolution protocols used when DNS resolution fails. Attackers exploit these protocols using tools such as Responder, which answers broadcast requests and impersonates legitimate systems.
+
+Victim systems may automatically send NTLM authentication requests to attacker-controlled services, exposing challenge-response hashes suitable for relay attacks or offline cracking.
+
+SMB relay attacks reuse intercepted NTLM authentication sessions against other systems without requiring password cracking. Weak SMB configurations increase exposure to unauthorized access and credential abuse.
+
+ARP spoofing manipulates Address Resolution Protocol mappings within local networks. Attackers send forged ARP responses causing victim systems to associate attacker MAC addresses with legitimate gateway IP addresses.
+
+Successful ARP spoofing enables:
+- Traffic interception
+- Packet modification
+- Session hijacking
+- Credential monitoring
+- DNS manipulation
+
+Ettercap automates ARP poisoning and Man-in-the-Middle attack workflows. Wireshark complements these attacks by capturing and analyzing network packets in real time.
+
+Wireshark provides visibility into:
+- TCP sessions
+- HTTP requests
+- DNS lookups
+- ICMP traffic
+- TLS communication
+- ARP behavior
+
+Secure network design requires:
+- Encrypted protocols
+- SMB hardening
+- Disabling LLMNR
+- VLAN segmentation
+- Network monitoring
+- ARP inspection
+
+6. Mobile Application Security Testing
+
+Mobile applications introduce unique security risks involving insecure local storage, runtime manipulation, weak inter-process communication, exposed components, and embedded secrets.
+
+Android applications are packaged as APK files containing:
+- Dalvik bytecode
+- Application resources
+- Configuration files
+- AndroidManifest.xml
+- Embedded libraries
+
+Static analysis inspects application contents without executing the application. MobSF automates Android APK analysis and identifies:
+- Exported activities
+- Dangerous permissions
+- Hardcoded credentials
+- Weak cryptography
+- Insecure storage
+- Embedded secrets
+
+Exported components increase attack surface because external applications may interact with internal application functionality.
+
+Dynamic analysis evaluates application behavior during runtime execution. Frida enables runtime instrumentation and function hooking, allowing analysts to intercept function calls, bypass authentication checks, and manipulate application behavior dynamically.
+
+Runtime hooking demonstrates how attackers analyze:
+- Login validation functions
+- Encryption routines
+- API requests
+- Sensitive memory content
+
+Android applications communicate internally using IPC mechanisms including:
+- Activities
+- Services
+- Broadcast Receivers
+- Content Providers
+
+Drozer assists with Android IPC testing by enumerating packages, exported components, and vulnerable communication interfaces.
+
+Secure mobile application development requires:
+- Certificate pinning
+- Code obfuscation
+- Secure local storage
+- Runtime integrity checks
+- Minimal permissions
+- Encrypted communication
+
+7. Vulnerability Assessment Methodology
+
+Vulnerability assessment identifies weaknesses, insecure services, outdated software, and exploitable configurations within systems and applications.
+
+Nmap performs:
+- Host discovery
+- Port scanning
+- Service enumeration
+- Version detection
+- Script-based vulnerability detection
+
+OpenVAS automates vulnerability scanning using vulnerability feeds, service detection, CVE databases, and risk classification engines.
+
+Severity levels commonly include:
+- Critical
+- High
+- Medium
+- Low
+- Informational
+
+Severity classification depends on:
+- Exploitability
+- Privilege requirements
+- Potential impact
+- Network exposure
+- Authentication requirements
+
+Vulnerability assessment supports penetration testing by identifying exploitable targets prior to manual exploitation activities.
+
+8. Reporting and Remediation
+
+Professional penetration testing reports convert technical findings into structured documentation suitable for developers, administrators, executives, and auditors.
+
+A professional VAPT report includes:
+- Executive Summary
+- Scope
+- Methodology
+- Findings
+- Exploitation Evidence
+- Risk Severity
+- Remediation Recommendations
+- Conclusion
+
+Executive summaries communicate operational and business impact using non-technical language suitable for management stakeholders.
+
+Technical sections contain:
+- Attack reproduction steps
+- Screenshots
+- Payloads
+- Commands
+- Evidence
+- Impact analysis
+
+CVSS scoring helps prioritize vulnerabilities based on:
+- Attack complexity
+- Impact severity
+- Privilege requirements
+- Exploit availability
+
+Remediation focuses on:
+- Secure coding practices
+- Patch management
+- Network hardening
+- Input validation
+- Access control
+- Logging and monitoring
+- Least privilege enforcement
+
+Effective remediation reduces attack surface and improves long-term organizational security posture.
+
+9. Capstone VAPT Engagement
+
+A full VAPT engagement combines reconnaissance, scanning, exploitation, privilege escalation, persistence simulation, network analysis, mobile testing, evidence collection, remediation planning, and reporting into a structured assessment lifecycle.
+
+The capstone workflow validates practical offensive security understanding by simulating real-world attack scenarios against intentionally vulnerable systems.
+
+The assessment demonstrates how vulnerabilities across applications, operating systems, networks, and mobile environments can combine into complete compromise scenarios if proper security controls are absent.
