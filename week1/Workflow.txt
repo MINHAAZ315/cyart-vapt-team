@@ -1,0 +1,44 @@
+# Workflow.txt – Week 1
+
+1. Installed Kali Linux in VMware Workstation.
+
+2. Downloaded and configured Metasploitable vulnerable virtual machine.
+
+3. Configured virtual network between Kali Linux and Metasploitable.
+
+4. Verified connectivity using ping commands.
+
+5. Performed service enumeration using Nmap.
+
+Command Used:
+nmap -sV 192.168.x.x
+
+6. Identified open ports and services:
+- FTP (21)
+- SSH (22)
+- Telnet (23)
+- HTTP (80)
+
+7. Performed web server scanning using Nikto.
+
+Command Used:
+nikto -h http://192.168.x.x
+
+8. Identified:
+- Missing HTTP security headers
+- Outdated Apache server
+- HTTP TRACE method enabled
+
+9. Attempted vulnerability scanning using OpenVAS.
+
+10. Recorded findings and analyzed vulnerabilities using CVSS scoring.
+
+11. Categorized vulnerabilities based on severity:
+- Critical
+- High
+- Medium
+- Low
+
+12. Documented remediation recommendations.
+
+13. Prepared final PDF report with screenshots and technical findings.
