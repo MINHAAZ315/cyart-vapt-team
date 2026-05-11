@@ -1,0 +1,122 @@
+# Findings and Vulnerabilities 
+
+Target IP Address: 192.168.190.129
+Environment: VMware Virtual Lab
+Attacker Machine: Kali Linux
+Target Machine: Metasploitable
+
+--------------------------------------------------
+1. FTP Service Vulnerability
+--------------------------------------------------
+Port: 21
+Service: FTP
+Version: vsftpd 2.3.4
+Risk Level: Critical
+CVSS Score: 10.0
+
+Description:
+The FTP service is running an outdated version of vsftpd that contains a known backdoor vulnerability (CVE-2011-2523). This vulnerability may allow unauthorized remote access and system compromise.
+
+Impact:
+- Unauthorized remote access
+- Remote command execution
+- Complete system compromise
+
+Recommendation:
+- Disable vulnerable FTP service
+- Upgrade to secure FTP/SFTP solution
+- Restrict FTP access using firewall rules
+
+--------------------------------------------------
+2. Telnet Service Exposure
+--------------------------------------------------
+Port: 23
+Service: Telnet
+Risk Level: High
+CVSS Score: 7.5
+
+Description:
+Telnet transmits authentication credentials in plain text without encryption, making communication vulnerable to interception attacks.
+
+Impact:
+- Credential theft
+- Man-in-the-middle attacks
+- Unauthorized access
+
+Recommendation:
+- Disable Telnet service
+- Replace Telnet with SSH
+- Enforce encrypted remote administration
+
+--------------------------------------------------
+3. Outdated Apache Web Server
+--------------------------------------------------
+Port: 80
+Service: HTTP
+Version: Apache 2.2.8
+Risk Level: High
+CVSS Score: 7.5
+
+Description:
+The Apache web server version detected is outdated and may contain publicly known vulnerabilities.
+
+Impact:
+- Web application attacks
+- Directory traversal
+- Potential remote exploitation
+
+Recommendation:
+- Upgrade Apache to latest stable version
+- Apply security patches regularly
+- Disable unnecessary modules
+
+--------------------------------------------------
+4. HTTP TRACE Method Enabled
+--------------------------------------------------
+Port: 80
+Risk Level: Medium
+CVSS Score: 4.3
+
+Description:
+The HTTP TRACE method was enabled on the web server, which may allow Cross-Site Tracing attacks.
+
+Impact:
+- Information disclosure
+- Session hijacking support
+
+Recommendation:
+- Disable TRACE method in Apache configuration
+
+--------------------------------------------------
+5. Missing Security Headers
+--------------------------------------------------
+Service: HTTP
+Risk Level: Low
+CVSS Score: 3.1
+
+Description:
+Important security headers were missing from HTTP responses.
+
+Impact:
+- Reduced browser-side protection
+- Increased risk of client-side attacks
+
+Recommendation:
+- Implement:
+  - Content-Security-Policy
+  - X-Frame-Options
+  - X-Content-Type-Options
+  - Strict-Transport-Security
+
+--------------------------------------------------
+Tools Used
+--------------------------------------------------
+- Nmap
+- Nikto
+- OpenVAS (Attempted)
+- Kali Linux
+
+--------------------------------------------------
+Assessment Summary
+--------------------------------------------------
+The assessment identified multiple critical and high-risk vulnerabilities caused by outdated services, insecure protocols, and weak configurations. Immediate remediation is recommended to reduce the attack surface and improve overall security posture.
