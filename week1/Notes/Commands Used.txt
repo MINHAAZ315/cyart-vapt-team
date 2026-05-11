@@ -1,0 +1,46 @@
+# Commands Used – Week 1
+
+# Target IP Address
+# Target Machine: 192.168.190.129
+# Attacker Machine: Kali Linux
+
+# Network Connectivity Check
+ping 192.168.190.129
+
+# Nmap Service Version Scan
+nmap -sV 192.168.190.129
+
+# Nmap Aggressive Scan
+nmap -A 192.168.190.129
+
+# Nmap Full Port Scan
+nmap -p- 192.168.190.129
+
+# Nikto Web Vulnerability Scan
+nikto -h http://192.168.190.129
+
+# OpenVAS Start Command
+sudo gvm-start
+
+# Check OpenVAS Status
+sudo gvm-check-setup
+
+# Browser Access for OpenVAS
+https://127.0.0.1:9392
+
+# Basic Linux Network Commands
+ifconfig
+ip a
+netstat -tulnp
+
+# Verify Running Services
+service --status-all
+
+# System Information
+uname -a
+
+# Route Information
+route -n
+
+# DNS Information
+cat /etc/resolv.conf
