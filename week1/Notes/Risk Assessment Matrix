@@ -1,0 +1,85 @@
+# Risk Assessment Matrix 
+
+Target System: 192.168.190.129
+Assessment Type: Vulnerability Assessment
+Environment: Kali Linux + Metasploitable VM
+
+--------------------------------------------------
+Risk Rating Criteria
+--------------------------------------------------
+
+Likelihood:
+1 = Low
+2 = Medium
+3 = High
+
+Impact:
+1 = Low
+2 = Medium
+3 = High
+
+Risk Level:
+1-2   = Low
+3-4   = Medium
+6-9   = High/Critical
+
+--------------------------------------------------
+Risk Assessment Table
+--------------------------------------------------
+
+Vulnerability	Likelihood	Impact	Risk Score	Risk Level
+vsftpd 2.3.4 Backdoor	High (3)	High (3)	9	Critical
+Telnet Service Enabled	High (3)	High (3)	9	Critical
+Outdated Apache Web Server	High (3)	Medium (2)	6	High
+HTTP TRACE Method Enabled	Medium (2)	Medium (2)	4	Medium
+Missing HTTP Security Headers	Low (1)	Medium (2)	2	Low
+
+
+
+--------------------------------------------------
+Risk Analysis Summary
+--------------------------------------------------
+
+1. Critical Risks
+- FTP backdoor vulnerability allows remote compromise.
+- Telnet exposes credentials in plaintext.
+
+2. High Risks
+- Outdated Apache version may contain exploitable CVEs.
+
+3. Medium Risks
+- HTTP TRACE method may assist session hijacking attacks.
+
+4. Low Risks
+- Missing security headers weaken browser-side protection.
+
+--------------------------------------------------
+Recommended Priority Order
+--------------------------------------------------
+
+Priority 1:
+- Remove vulnerable FTP service
+- Disable Telnet immediately
+
+Priority 2:
+- Update Apache web server
+- Apply latest patches
+
+Priority 3:
+- Disable TRACE method
+- Implement security headers
+
+--------------------------------------------------
+Tools Used
+--------------------------------------------------
+- Nmap
+- Nikto
+- CVSS Calculator
+- OpenVAS
+- Kali Linux
+
+--------------------------------------------------
+Conclusion
+--------------------------------------------------
+
+The target system contains multiple severe vulnerabilities that significantly increase the attack surface. Critical services should be remediated immediately to prevent unauthorized access and remote exploitation.
